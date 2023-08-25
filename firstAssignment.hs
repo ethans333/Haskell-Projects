@@ -1,5 +1,3 @@
-main :: IO ()
-
 -- 1.
 multTwo x y = x * y
 
@@ -18,7 +16,8 @@ first_b n = [x | x <- [1 .. n], isMult6Or11 x]
 second_a n =
   [x | x <- [1 .. n], (head (show x)) == '3' && (show x) == reverse (show x)]
 
-main = do
-  print (second_a 100)
-
 -- 6.
+isPalindromeThatStartsWithDigit3 x = (head (show x)) == '3' && (show x) == reverse (show x)
+
+second_b n =
+  [x | x <- [1 .. n], isPalindromeThatStartsWithDigit3 x]
