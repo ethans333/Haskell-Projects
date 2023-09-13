@@ -16,17 +16,13 @@
 
 main :: IO ()
 
-hasThreeFactors n = go 0 1 n
-  where
-    go fac div n
-      | n <= 3 = False
-      | fac > 3 = False
-      | div > n && fac /= 3 = False
-      | div > n && fac == 3 = True
-      | n `mod` div == 0 = go (fac + 1) (div + 1) n
-      | otherwise = go fac (div + 1) n
+squareADigit c = ((fromEnum) - 48) ^ 2
 
-problem3 n = [x | x <- [1 .. n], hasThreeFactors x || x `mod` 5 == 0]
+processDigits xs = sum [squareADigit x | x <- xs]
+
+squareDigits n = processDigits (show n)
+
+generateSequence n = length [x| x <- [1..(n-1)], generateSequence x == 89]
 
 main = do
-  print (problem3 100)
+  print (generateSequence (301))
